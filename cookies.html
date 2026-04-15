@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies — StadiumCompany</title>
+    <meta name="description" content="Politique d'utilisation des cookies sur le site StadiumCompany.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">StadiumCompany</a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="actualites.html">Actualités</a></li>
+            <li><a href="actualites-stade.html">Le stade</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="header-cta">Réserver</a>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="">
+    </div>
+    <div class="page-hero-inner">
+        <div class="breadcrumb"><a href="index.html">Accueil</a> / Cookies</div>
+        <h1>Gestion des<br>cookies</h1>
+    </div>
+</section>
+
+<section class="section legal-content">
+    <h2>1. Qu'est-ce qu'un cookie ?</h2>
+    <p>Un cookie est un petit fichier texte déposé sur votre appareil (ordinateur, tablette, smartphone) lors de la consultation d'un site web. Il permet au site de mémoriser des informations sur votre visite, comme votre langue préférée ou vos préférences de navigation.</p>
+
+    <h2>2. Cookies utilisés sur ce site</h2>
+    <table class="legal-table">
+        <tr>
+            <th>Type de cookie</th>
+            <th>Finalité</th>
+            <th>Durée</th>
+            <th>Consentement</th>
+        </tr>
+        <tr>
+            <td>Cookies essentiels</td>
+            <td>Fonctionnement du site (préférences cookies, navigation)</td>
+            <td>12 mois</td>
+            <td>Non requis</td>
+        </tr>
+        <tr>
+            <td>Mesure d'audience (Matomo)</td>
+            <td>Comprendre comment les visiteurs utilisent le site (anonymisé)</td>
+            <td>13 mois</td>
+            <td>Requis</td>
+        </tr>
+    </table>
+
+    <h2>3. Gérer vos préférences</h2>
+    <p>Vous pouvez à tout moment modifier vos préférences en matière de cookies en cliquant sur le bouton ci-dessous. Cette action effacera vos choix et le bandeau de consentement réapparaîtra à votre prochaine visite.</p>
+    <p style="margin-top: 30px;">
+        <button class="btn btn-primary" onclick="resetCookieConsent()">Modifier mes préférences cookies</button>
+    </p>
+
+    <h2>4. Désactiver les cookies dans votre navigateur</h2>
+    <p>Vous pouvez également configurer votre navigateur pour bloquer ou supprimer les cookies. Voici les liens vers les guides officiels :</p>
+    <ul>
+        <li><strong>Chrome :</strong> Paramètres → Confidentialité et sécurité → Cookies</li>
+        <li><strong>Firefox :</strong> Paramètres → Vie privée et sécurité → Cookies</li>
+        <li><strong>Safari :</strong> Préférences → Confidentialité</li>
+        <li><strong>Edge :</strong> Paramètres → Cookies et autorisations de site</li>
+    </ul>
+    <p>Attention : la désactivation de tous les cookies peut altérer le bon fonctionnement de certains sites.</p>
+
+    <p class="legal-update"><em>Dernière mise à jour : avril 2026</em></p>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <div class="footer-brand">StadiumCompany</div>
+            <p>Le cœur des grands événements sportifs et culturels — un stade moderne, connecté et accessible, pensé pour offrir à chacun une expérience inoubliable.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="index.html">Accueil</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="actualites.html">Actualités</a>
+            <a href="actualites-stade.html">Le stade</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+            <h4>Infos</h4>
+            <a href="#">Billetterie</a>
+            <a href="#">Plan d'accès</a>
+            <a href="#">Partenaires</a>
+            <a href="#">Recrutement</a>
+        </div>
+        <div class="footer-col">
+            <h4>Suivez-nous</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">YouTube</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 StadiumCompany — Tous droits réservés</span>
+        <span><a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Politique de confidentialité</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+</footer>
+
+<script src="cookies.js"></script>
+</body>
+</html>
