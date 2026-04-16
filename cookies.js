@@ -1,8 +1,31 @@
-// ===== Gestion du bandeau cookies StadiumCompany =====
+// ===== Gestion du bandeau cookies + Matomo (RGPD) =====
 (function() {
     const COOKIE_NAME = 'stadiumcompany_cookie_consent';
     const COOKIE_DAYS = 365;
 
+    // ===== MATOMO =====
+    // Script chargé uniquement après consentement explicite de l'utilisateur
+    function loadMatomo() {
+        if (window._matomoLoaded) return;
+        window._matomoLoaded = true;
+
+        var _paq = window._paq = window._paq || [];
+        _paq.push(['setDoNotTrack', true]);
+        _paq.push(['disableCookies']);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u = "https://sofianb78.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true;
+            g.src = 'https://cdn.matomo.cloud/sofianb78.matomo.cloud/matomo.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    }
+
+    // ===== UTILITAIRES COOKIES =====
     function setCookie(name, value, days) {
         const d = new Date();
         d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -23,6 +46,7 @@
         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
     }
 
+    // ===== BANDEAU =====
     function showBanner() {
         if (document.getElementById('cookie-banner')) return;
         const banner = document.createElement('div');
@@ -31,7 +55,7 @@
             <div class="cookie-banner-inner">
                 <div class="cookie-text">
                     <strong>🍪 Cookies & vie privée</strong>
-                    <p>Nous utilisons des cookies pour assurer le bon fonctionnement du site et mesurer son audience de manière anonymisée. Vous pouvez accepter ou refuser les cookies de mesure d'audience. <a href="cookies.html">En savoir plus</a></p>
+                    <p>Nous utilisons Matomo (outil d'analyse open source, hébergé en Europe) pour mesurer la fréquentation du site de façon anonymisée. Vous pouvez accepter ou refuser. <a href="cookies.html">En savoir plus</a></p>
                 </div>
                 <div class="cookie-buttons">
                     <button class="cookie-btn cookie-btn-refuse" onclick="cookieConsent('refused')">Refuser</button>
@@ -40,7 +64,6 @@
             </div>
         `;
         document.body.appendChild(banner);
-        // animation d'entrée
         setTimeout(() => banner.classList.add('show'), 50);
     }
 
@@ -52,14 +75,12 @@
         }
     }
 
+    // ===== API PUBLIQUE =====
     window.cookieConsent = function(choice) {
         setCookie(COOKIE_NAME, choice, COOKIE_DAYS);
         hideBanner();
         if (choice === 'accepted') {
-            console.log('Cookies de mesure d\'audience activés');
-            // Ici on activerait Matomo en production
-        } else {
-            console.log('Cookies de mesure refusés');
+            loadMatomo();
         }
     };
 
@@ -69,10 +90,13 @@
         showBanner();
     };
 
-    // Affichage automatique si pas encore de choix enregistré
+    // ===== DÉMARRAGE =====
     document.addEventListener('DOMContentLoaded', function() {
-        if (!getCookie(COOKIE_NAME)) {
+        const choice = getCookie(COOKIE_NAME);
+        if (!choice) {
             showBanner();
+        } else if (choice === 'accepted') {
+            loadMatomo();
         }
     });
 })();
